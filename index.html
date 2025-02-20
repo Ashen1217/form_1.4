@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DSL RED CARPET 2027 - Participation Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @media (max-width: 768px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .p-6 {
+                padding: 1rem !important;
+            }
+            
+            .gap-6 {
+                gap: 0.75rem !important;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script>
+        // Add this script to ensure form visibility
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force form visibility after a slight delay
+            setTimeout(() => {
+                document.querySelector('.form-wrapper').style.opacity = '1';
+                document.querySelector('.form-wrapper').style.visibility = 'visible';
+                document.querySelectorAll('.form-section').forEach(section => {
+                    section.style.opacity = '1';
+                    section.style.visibility = 'visible';
+                });
+            }, 100);
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Force immediate visibility of critical elements
+        document.querySelector('.form-wrapper').style.display = 'block';
+        document.querySelector('.form-wrapper').style.opacity = '1';
+        document.querySelector('.form-wrapper').style.visibility = 'visible';
+        
+        // Ensure header and first section are immediately visible
+        document.querySelector('.header-text-container').style.opacity = '1';
+        document.querySelector('.header-text-container').style.visibility = 'visible';
+        
+        // Remove any transform that might be causing spacing issues
+        document.querySelectorAll('.form-section').forEach(section => {
+            section.style.transform = 'none';
+        });
+    });
+    </script>
+</head>
+<body class="min-h-screen p-4 bg-gradient-to-br from-gray-50 to-gray-100">
+    <!-- System Info (Hidden) -->
+    <div class="hidden">
+        <span id="currentDateTime" class="sl-time"></span>
+        <span id="userLogin">Ashen1217</span>
+    </div>
+
+    <!-- Main Form Container -->
+    <div class="form-container max-w-4xl mx-auto" data-scroll-container>
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden form-wrapper">
+            <!-- Header Section -->
+            <div class="bg-gradient-to-b from-blue-50 to-white">
+                <div class="header-image-container">
+                    <img src="https://i.ibb.co/Pv5bm6rZ/Whats-App-Image-2024-12-05-at-13-59-06-50f0ece7.jpg"
+                        alt="DSL Red Carpet 2027" 
+                        class="header-image"
+                        loading="eager"
+                        fetchpriority="high">
+                    <div class="header-gradient"></div>
+                </div>
+                
+                <div class="header-text-container">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600">
+                        DSL RED CARPET 2027
+                    </h1>
+                    <p class="text-base sm:text-lg mt-2">
+                        <span class="font-bold text-blue-800">
+                            10th to 14th February 2027 & 11th to 15th February 2027
+                        </span>
+                        <br>
+                        <span class="text-gray-600">@ Pattaya/Bangkok, Thailand</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Main Form -->
+            <form id="participantForm" class="p-6 md:p-8 space-y-8" novalidate>
+                <!-- Success Message -->
+                <div id="thankYouMessage" class="hidden">
+                    <div class="success-message">
+                        <div class="success-content">
+                            <div class="checkmark-circle">
+                                <div class="checkmark"></div>
+                            </div>
+                            <h2 class="text-2xl font-bold text-green-700 mb-4">Thank You!</h2>
+                            <p class="text-gray-600 mb-6">
+                                Your application has been successfully submitted.
+                            </p>
+                            <div class="submission-details p-4 bg-gray-50 rounded-lg mb-6">
+                                <p class="text-sm text-gray-600">
+                                    <span class="font-medium">Submission Details:</span><br>
+                                    Submitted on: <span id="submissionDateTime"></span>
+                                </p>
+                            </div>
+                            <button type="button" onclick="resetForm()" 
+                                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                Submit Another Application
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Inputs -->
+                <div id="formInputs" class="space-y-8">
+                    <!-- Company Details Section -->
+                    <div class="form-section" data-aos="fade-up" data-aos-duration="800">
+                        <h2 class="text-2xl font-semibold text-blue-800 mb-6">
+                            Company Details
+                        </h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group relative">
+                                <label for="companySearch" class="required-field">
+                                    <i class="fas fa-building text-blue-600 mr-2"></i>Search Company
+                                </label>
+                                <input type="text" id="companySearch" name="companySearch" required class="form-input"
+                                    placeholder="Type to search company..." autocomplete="off">
+                                <div id="searchResults" class="search-results">
+                                    <!-- Search results will be dynamically inserted here -->
+                                </div>
+                                <div id="companySearchError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerCode" class="required-field">
+                                    <i class="fas fa-hashtag text-blue-600 mr-2"></i>Customer Code
+                                </label>
+                                <input type="text" id="customerCode" name="customerCode" required class="form-input"
+                                    readonly>
+                                <div id="customerCodeError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="town" class="required-field">
+                                    <i class="fas fa-city text-blue-600 mr-2"></i>Town
+                                </label>
+                                <input type="text" id="town" name="town" required class="form-input" readonly>
+                                <div id="townError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="district" class="required-field">
+                                    <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>District
+                                </label>
+                                <input type="text" id="district" name="district" required class="form-input" readonly>
+                                <div id="districtError" class="error-message"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Participant Information -->
+                    <div class="form-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                        <h2 class="text-2xl font-semibold text-blue-800 mb-4">
+                            Participant Information
+                        </h2>
+                        <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                            <p class="text-blue-800">
+                                <span class="font-bold">•</span>
+                                Please fill details as mentioned in the passport
+                            </p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="participantName" class="required-field">
+                                    <i class="fas fa-user text-blue-600 mr-2"></i>Full Name
+                                </label>
+                                <input type="text" id="participantName" name="participantName" required
+                                    class="form-input uppercase" placeholder="Enter full name as in passport">
+                                <div id="participantNameError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="surname" class="required-field">
+                                    <i class="fas fa-user-tag text-blue-600 mr-2"></i>Surname
+                                </label>
+                                <input type="text" id="surname" name="surname" required class="form-input uppercase"
+                                    placeholder="Enter surname as in passport">
+                                <div id="surnameError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="otherNames">
+                                    <i class="fas fa-users text-blue-600 mr-2"></i>Other Names
+                                </label>
+                                <input type="text" id="otherNames" name="otherNames" class="form-input uppercase"
+                                    placeholder="Enter other names if any">
+                                <div id="otherNamesError" class="error-message"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Details -->
+                    <div class="form-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <h2 class="text-2xl font-semibold text-blue-800 mb-4">
+                            Personal Details
+                        </h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label class="required-field">
+                                    <i class="fas fa-venus-mars text-blue-600 mr-2"></i>Gender
+                                </label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="radio" name="gender" value="Male" required class="w-5 h-5">
+                                        <span>Male</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="radio" name="gender" value="Female" class="w-5 h-5">
+                                        <span>Female</span>
+                                    </label>
+                                </div>
+                                <div id="genderError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dateOfBirth" class="required-field">
+                                    <i class="fas fa-calendar-alt text-blue-600 mr-2"></i>Date of Birth
+                                </label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required class="form-input">
+                                <div id="dateOfBirthError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age" class="required-field">
+                                    <i class="fas fa-hourglass-half text-blue-600 mr-2"></i>Age
+                                </label>
+                                <input type="text" id="age" name="age" required class="form-input" readonly>
+                                <div id="ageError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mobileNumber" class="required-field">
+                                    <i class="fas fa-mobile-alt text-blue-600 mr-2"></i>Mobile Number
+                                </label>
+                                <input type="tel" id="mobileNumber" name="mobileNumber" required class="form-input"
+                                    placeholder="07XXXXXXXX" maxlength="10" pattern="07[0-9]{8}">
+                                <div id="mobileNumberError" class="error-message"></div>
+                            </div>
+
+                            <!-- Moved Relationship Status here -->
+                            <div class="form-group">
+                                <label for="relationshipStatus" class="required-field">
+                                    <i class="fas fa-heart text-blue-600 mr-2"></i>Select Relationship
+                                </label>
+                                <select id="relationshipStatus" name="relationshipStatus" required class="form-input">
+                                    <option value="" disabled selected>Select Relationship</option>
+                                    <option value="Self">Self</option>
+                                    <option value="Spouse">Spouse</option>
+                                    <option value="Son">Son</option>
+                                    <option value="Daughter">Daughter</option>
+                                    <option value="Father">Father</option>
+                                    <option value="Mother">Mother</option>
+                                    <option value="Brother">Brother</option>
+                                    <option value="Sister">Sister</option>
+                                    <option value="Grandfather">Grandfather</option>
+                                    <option value="Grandmother">Grandmother</option>
+                                    <option value="Uncle">Uncle</option>
+                                    <option value="Aunt">Aunt</option>
+                                    <option value="Cousin">Cousin</option>
+                                    <option value="Nephew">Nephew</option>
+                                    <option value="Niece">Niece</option>
+                                    <option value="Father-in-law">Father-in-law</option>
+                                    <option value="Mother-in-law">Mother-in-law</option>
+                                    <option value="Son-in-law">Son-in-law</option>
+                                    <option value="Daughter-in-law">Daughter-in-law</option>
+                                    <option value="Brother-in-law">Brother-in-law</option>
+                                    <option value="Sister-in-law">Sister-in-law</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div id="relationshipStatusError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="passportNumber" class="required-field">
+                                    <i class="fas fa-passport text-blue-600 mr-2"></i>Passport Number
+                                </label>
+                                <input type="text" id="passportNumber" name="passportNumber" required maxlength="10"
+                                    class="form-input uppercase" placeholder="Enter passport number">
+                                <div class="text-sm text-gray-500 mt-1">
+                                    Format: Letter (A-Z) followed by 7-9 digits
+                                </div>
+                                <div id="passportNumberError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="issueDate" class="required-field">
+                                    <i class="fas fa-calendar-plus text-blue-600 mr-2"></i>Issue Date
+                                </label>
+                                <input type="date" id="issueDate" name="issueDate" required class="form-input">
+                                <div id="issueDateError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="expiryDate" class="required-field">
+                                    <i class="fas fa-calendar-times text-blue-600 mr-2"></i>Expiry Date
+                                </label>
+                                <input type="date" id="expiryDate" name="expiryDate" required class="form-input" readonly>
+                                <div id="expiryDateError" class="error-message"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="form-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                        <h2 class="text-2xl font-semibold text-blue-800 mb-4">
+                            Preferences
+                        </h2>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="tshirtSize" class="required-field">
+                                    <i class="fas fa-tshirt text-blue-600 mr-2"></i>T-Shirt Size
+                                </label>
+                                <select id="tshirtSize" name="tshirtSize" required class="form-input">
+                                    <option value="" disabled selected>Select your T-shirt size</option>
+                                    <option value="S">Small (S)</option>
+                                    <option value="M">Medium (M)</option>
+                                    <option value="L">Large (L)</option>
+                                    <option value="XL">Extra Large (XL)</option>
+                                    <option value="XXL">Double Extra Large (XXL)</option>
+                                    <option value="XXXL">Triple Extra Large (XXXL)</option>
+                                </select>
+                                <div id="tshirtSizeError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required-field">
+                                    <i class="fas fa-utensils text-blue-600 mr-2"></i>Meal Preference
+                                </label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="radio" name="mealPreference" value="Vegetarian" required
+                                            class="w-5 h-5">
+                                        <span>Vegetarian</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="radio" name="mealPreference" value="Non-Vegetarian" class="w-5 h-5">
+                                        <span>Non-Vegetarian</span>
+                                    </label>
+                                </div>
+                                <div id="mealPreferenceError" class="error-message"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Participants -->
+                    <div class="form-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                        <h2 class="text-2xl font-semibold text-blue-800 mb-4">
+                            <i class="fas fa-user-plus text-blue-600 mr-2"></i>Additional Participants
+                        </h2>
+                        <div class="space-y-4">
+                            <p class="text-gray-700 mb-4">
+                                Do you want to register additional participants?
+                            </p>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="additionalParticipants" value="Yes" required class="w-5 h-5">
+                                    <span>Yes, I have additional participants</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="additionalParticipants" value="No" class="w-5 h-5">
+                                    <span>No additional participants</span>
+                                </label>
+                            </div>
+                            <div id="additionalParticipantsError" class="error-message"></div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                        <button type="submit" class="submit-button">
+                            <span id="buttonText">Submit Application</span>
+                            <div id="spinner" class="spinner hidden"></div>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Processing your submission...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
